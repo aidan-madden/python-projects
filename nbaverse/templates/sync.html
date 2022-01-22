@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+  <h1 class="is-size-3">Sync Data</h1>
+
+  <form action="{{ url_for('sync_data') }}" method="post">
+
+    <div class="field is-grouped">
+      <div class="control">
+        <input type="submit" name="submit_button" value="Teams" class="button is-primary" />
+      </div>
+      <div class="control">
+        <input type="submit" name="submit_button" value="Players" class="button is-primary" />
+      </div>
+      <div class="control">
+        <a href="{{ url_for('team_index') }}" class="button is-text">Cancel</a>
+      </div>
+    </div>
+  </form>
+
+{% endblock %}

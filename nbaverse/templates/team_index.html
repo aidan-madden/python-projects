@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  {% if not teams %}
+    <div class="content">
+      <p>You haven't created any teams! <a href="#">Create your first team.</a>
+    </div>
+  {% endif %}
+
+  {% for team in teams %}
+    <article class="message">
+      <div class="message-header">
+        <p>{{ team.full_name }}</p>
+        <div>
+        {% if g.user %}
+	  <a class="button is-primary is-small has-text-weight-bold" href="{{ url_for('team_view', team_id=team.id) }}">
+            View Team
+          </a>
+          <a class="button is-danger is-small has-text-weight-bold" href="{{ url_for('team_delete', team_id=team.id) }}">
+            Delete Team
+          </a>
+	{% else %}
+	   <a class="button is-danger is-small has-text-weight-bold" href="{{ url_for('team_view', team_id=team.id) }}">
+            View Team
+          </a>
+        {% endif %}
+	</div>
+      </div>
+      <div class="message-body content">
+        <p>abbreviation: {{ team.abbreviation }}</p>
+        <p>city: {{ team.city }}</p>
+        <p>conference: {{ team.conf_name }}</p>
+        <p>division: {{ team.div_name }}</p>
+        <img src="{{ team.logo }}" style="width:150px;height:150px;"/>
+      </div>
+    </article>
+  {% endfor %}
+{% endblock %}

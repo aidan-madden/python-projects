@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  {% for player in players %}
+    <article class="message">
+      <div class="message-header">
+        <p>{{ player.firstName }}</p>
+        <p>{{ player.lastName }}</p>
+        <p>height: {{ player.h }}</p>
+        <p>weight: {{ player.weight }}</p>
+        <p>country: {{ player.country }}</p>
+        <p>college: {{ player.college }}</p>
+      </div>
+    </article>
+  {% endfor %}
+{% endblock %}
